@@ -8,9 +8,11 @@
     <title>Document</title>
 </head>
 <body>
+        <div class="form-img">
+            <img src= "Tablet login-bro (1).svg">
     <div id="Login">
 
-        <h2>Sign In</h2>
+        <h2>Login</h2>
       
         <div class="geral">
         Nome:
@@ -41,15 +43,30 @@
        </form>
        </div>
        <div class="botao">
-           <button onclick="add()">Logar</button>"
+           <button onclick="add()">Logar</button>
 
        </div>
        <script>
-            function logar(){
+            function Logar(){
                 var botao = document.createElement('button');
                 botao.className = "button";
                 botao.addEventListener("click",
                 function(){
-       </script>
+                }
+      };
+
+
+       
+        const name = document.getElementById('nome');
+        const login = document.getElementById('login');
+        const email = document.getElementById('email');
+        const emailRegex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+        const senha = document.getElementById('senha');
+        const confsenha = document.getElementById('confsenha');
+    
+  
+       
+
+    </script>
 </body>
 </html>
