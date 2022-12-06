@@ -9,31 +9,31 @@
 </head>
 <body>
         <div class="form-img">
-            <img src= "Tablet login-bro (1).svg">
+            <img src= "Tablet login-amico.png">
     <div id="Login">
 
         <h2>Login</h2>
       
         <div class="geral">
-        Nome:
-            <div class="name">
-            <input type="text" name="Nome" required placeholder="Digite seu Nome">
+        Nome
+        <div class="name">
+            <input type="text" placeholder="Minimo de 10 caracteres" id="nome" required oninput="ValidarNome()"><br>
+                </div>
+                   <b>Escolha seu usuário:</b> 
+                <div class="login">
+            <input type="text" placeholder="Maximo de 10 caracteres" id="login" required oninput="ValidarLogin()"><br>
+                </div>
+                  <b>Digite seu email:</b>
+                <div class="email">
+            <input type="email" placeholder="Insira um email valido" id="email" required oninput="ValidarEmail()"><br>
+                </div>
+                <b>Digite sua senha:</b>
+            <div class="senha">
+            <input type="password" placeholder="Use numeros e letras" id="senha" required oninput="CompararSenha()"><br>
             </div>
-            Login:
-            <div class="login">
-             <input type="text" name="Login" required placeholder="Digite seu nome de usuário">
-            </div>
-            Email:
-            <div class="email">
-            <input type="text" name="Email" required placeholder="Digite seu Email">
-            </div>
-            Senha:
-            <div class="senha"> 
-             <input type ="password" name="senha" required placeholder="Digite sua senha"><br>
-            </div>
-            Confirmar Senha:
+            <b>Confirme sua senha:</b>
             <div class="confirmar">
-            <input type="password" name="confirmar senha" required placeholder="Confirme sua senha"><br>
+            <input type="password" placeholder="As senhas devem ser iguais" id="confsenha" required oninput="CompararSenha()">
             </div>
           <div id="legenda"><br>
         
@@ -47,15 +47,6 @@
 
        </div>
        <script>
-            function Logar(){
-                var botao = document.createElement('button');
-                botao.className = "button";
-                botao.addEventListener("click",
-                function(){
-                }
-      };
-
-
        
         const name = document.getElementById('nome');
         const login = document.getElementById('login');
@@ -63,9 +54,92 @@
         const emailRegex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
         const senha = document.getElementById('senha');
         const confsenha = document.getElementById('confsenha');
-    
+
+        form.addEventListener('submit', (e) => {
+    e.preventDefault()
+})
+
+    function ValidarNome() {
+    if (nome.value == ""){
+        span[0].style.display = "none";
+    }
+    else if (nome.value.length < 10){
+        nome.style.border="3px solid #A72608";
+        span[0].style.display = "block";
+    }
+    else{
+        nome.style.border="3px solid #004E98";
+        span[0].style.display = "none";
+        var nomeSave = document.querySelector("#nome").value;
+        localStorage.setItem('nome', nomeSave);
+    }
+}
+
+    function ValidarLogin() {
+    if (login.value == ""){
+        span[1].style.display = "none";
+    }
+    else if (login.value.length > 10){
+        login.style.border = "3px solid #FF0000";
+        span[1].style.display = "block";
+    }
+    else{
+        login.style.border = "3px solid #004e98";
+        span[1].style.display = "none";
+        var loginSave = document.querySelector("#login").value
+        localStorage.setItem('login', loginSave)
+    }
+}
+
+    function ValidarEmail() {
+    if (email.value == "") {
+        span[2].style.display = "none";
+    }
+    else if (!emailRegex.test(email.value)){
+        email.style.border = "3px solid #A72608"
+        span[2].style.display = "block";
+    }
+    else {
+        email.style.border = "3px solid #004e98"
+        span[2].style.display = "none";
+        var emailSave = document.querySelector("#email").value;
+        localStorage.setItem('email', emailSave);
+    }
+}
+
+function CompararSenha() {
+    if (senha.value == "" && confirmsenha.value == "") {
+        span[3].style.border.display = "none";
+        span[4].style.border.display = "none";
+    }
+    else if (senha.value == confirmsenha.value) {
+        senha.style.border = "3px solid #004e98";
+        confirmsenha.style.border = "3px solid #004e98";
+        span[3].style.display = "none";
+        span[4].style.display = "none";
+        var senhaSave = document.querySelector("#senha").value;
+        localStorage.setItem('senha', senhaSave)
+    }
+    else {
+        senha.style.border = "3px solid #A72608";
+        confirmsenha.style.border = "3px solid #A72608";
+        span[3].style.display = "block";
+        span[4].style.display = "block";
+    }
+}
+
+function Logar() {
+    if(document.getElementById("nome").value, document.getElementById("login").value, document.getElementById("email").value, document.getElementById("senha").value, document.getElementById("confsenha").value == ""){
+
+    }
+    else if (nome.value.length < 10, login.value.length > 10, !emailRegex.test(email.value), senha.value != confirmsenha.value){
+
+    }
+    else{
+        window.location.href = "inner.html"
+    }
+};
   
-       
 
     </script>
 </body>
